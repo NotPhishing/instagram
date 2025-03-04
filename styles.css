@@ -161,3 +161,17 @@ body{
 .footer .copyright{
 	color: #999;	
 }
+
+.btn button {
+  background-color: #4995ee;
+  color: white; /* لجعل النص واضحًا */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px; /* لإعطاء الزر حواف مستديرة */
+}
+
+.btn button:hover {
+  background-color: #3b7fd9; /* لون أغمق عند تمرير الماوس */
+}
