@@ -163,15 +163,12 @@ body{
 }
 
 .btn button {
-  background-color: #4995ee;
-  color: white; /* لجعل النص واضحًا */
+  background-color: #4995ee !important; /* تغيير اللون فقط مع إعطاء الأولوية له */
+  color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
   cursor: pointer;
-  border-radius: 5px; /* لإعطاء الزر حواف مستديرة */
 }
 
 .btn button:hover {
-  background-color: #3b7fd9; /* لون أغمق عند تمرير الماوس */
+  background-color: #3b7fd9; /* لون عند تمرير الماوس */
 }
