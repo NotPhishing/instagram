@@ -11,8 +11,9 @@
 }
 
 body {
-  background: #fafafa;
+  background: #000000;
   font-size: 14px;
+  color: #ffffff;
 }
 
 /* جعل الصفحة متناسبة مع الهواتف */
@@ -32,8 +33,8 @@ body {
 
 .wrapper .header .top,
 .wrapper .signup {
-  background: #fff;
-  border: 1px solid #e6e6e6;
+  background: #000000;
+  border: 1px solid #222222;
   border-radius: 1px;
   padding: 40px 40px 20px;
 }
@@ -50,16 +51,16 @@ body {
 
 .wrapper .header .form .input_field .input {
   width: 100%;
-  background: #fafafa;
-  border: 1px solid #efefef;
+  background: #121212;
+  border: 1px solid #333333;
   font-size: 12px;
   border-radius: 3px;
-  color: #262626;
+  color: #ffffff;
   padding: 10px;
 }
 
 .wrapper .header .form .input_field .input:focus {
-  border: 1px solid #b2b2b2;
+  border: 1px solid #666666;
 }
 
 .wrapper .header .form .btn {
@@ -72,7 +73,7 @@ body {
 }
 
 .wrapper .header .form .btn button {
-  color: #fff;
+  color: #ffffff;
   display: block;
   width: 100%;
   background: none;
@@ -92,11 +93,11 @@ body {
 .wrapper .header .or .line {
   width: 30%;
   height: 2px;
-  background: #efefef;
+  background: #333333;
 }
 
 .wrapper .header .or p {
-  color: #999;
+  color: #aaaaaa;
   font-size: 12px;
 }
 
@@ -124,14 +125,14 @@ body {
 }
 
 .wrapper .dif .forgot a {
-  color: #003569;
+  color: #3897f0;
 }
 
 .wrapper .signup {
   margin: 10px 0 20px;
   padding: 25px 40px;
   text-align: center;
-  color: #262626;
+  color: #ffffff;
 }
 
 .wrapper .signup a {
@@ -140,7 +141,7 @@ body {
 
 .wrapper .apps {
   text-align: center;
-  color: #262626;
+  color: #ffffff;
 }
 
 .wrapper .apps p {
@@ -174,12 +175,12 @@ body {
 }
 
 .footer .links ul li a {
-  color: #003569;
+  color: #3897f0;
   font-size: 12px;
 }
 
 .footer .copyright {
-  color: #999;
+  color: #999999;
   margin-top: 10px;
 }
 
