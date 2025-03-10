@@ -224,3 +224,53 @@ body {
     margin-bottom: 5px;
   }
 }
+
+/* ----- إضافة الوضع الداكن (Dark Mode) ----- */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #000 !important;
+    color: #fff !important;
+  }
+
+  .wrapper .header .top,
+  .wrapper .signup {
+    background: #121212 !important;
+    border: 1px solid #262626 !important;
+  }
+
+  .wrapper .header .form .input_field .input {
+    background: #1a1a1a !important;
+    color: #fff !important;
+    border: 1px solid #333 !important;
+  }
+
+  .wrapper .header .form .btn {
+    background-color: #4995ee !important;
+    border: 1px solid #4995ee !important;
+  }
+
+  .wrapper .header .or .line {
+    background: #333 !important;
+  }
+
+  .wrapper .dif .fb p {
+    color: #1877f2 !important;
+  }
+
+  .wrapper .dif .forgot a,
+  .wrapper .signup a {
+    color: #4995ee !important;
+  }
+
+  .footer {
+    background: #181818 !important;
+  }
+
+  .footer .links ul li a {
+    color: #4995ee !important;
+  }
+
+  .footer .copyright {
+    color: #999 !important;
+  }
+}
